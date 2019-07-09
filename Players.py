@@ -1,6 +1,6 @@
 import random
 
-class Player:
+class playerClass:
 
     def __init__(self, name):
         self.score = 0

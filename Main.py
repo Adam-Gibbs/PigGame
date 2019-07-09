@@ -2,15 +2,18 @@ import Players
 import random
 
 def getPlayers():
-    newplayer = input("Player Name: ")
+    newPlayerName = input("Player Name: ")
 
-    if newplayer != "":
+    if newPlayerName != "":
         listplayers = getPlayers()
-        listplayers.append(newplayer)
+        listplayers.append(newPlayerName)
         return listplayers
 
     else:
         return list()
+
+def makePlayers(playerList):
+    return [Players.playerClass(playerList[count]) for count in range(len(playerList))]
 
 def chooseOrder(playerList):
     
@@ -24,13 +27,11 @@ def chooseOrder(playerList):
     return orderList
 
 
-
-
 def Main():
-    players = getPlayers()
+    players = makePlayers(getPlayers())
     while len(players) < 2:
         print("\n\nYou need more than 1 player to play...")
-        players = getPlayers()
+        players = makePlayers(getPlayers())
 
     players = chooseOrder(players)
 
