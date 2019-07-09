@@ -1,11 +1,26 @@
-import random
+from secrets import randbelow
 
 class playerClass:
 
     def __init__(self, name):
-        self.score = 0
+        self.name = name
+        self.score = 1
         self.stats = {'Pigs': 0, 'Wins': 0, 'Losses': 0}
         self.multiplyer = 1
+
+    def getScore(self):
+        return self.score
+
+    def getName(self):
+        return self.name
+
+    def checkWin(self):
+        if self.score % 101 == 0:
+            self.score += 1
+            return True
+        
+        else:
+            return False
 
     def roll(self):
 
@@ -13,7 +28,7 @@ class playerClass:
         pigs = 0
 
         for die in range(3):
-            result = random.randint(1, 6)
+            result = randbelow(7)
 
             if result == 2:
                 pigs += 1
