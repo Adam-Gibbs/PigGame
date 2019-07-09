@@ -28,7 +28,8 @@ class playerClass:
         pigs = 0
 
         for die in range(3):
-            result = randbelow(7)
+            result = randbelow(6)
+            result += 1
 
             if result == 2:
                 pigs += 1
@@ -38,5 +39,11 @@ class playerClass:
                 total += result
 
         return ((total * self.multiplyer), pigs)
+
+    def addScore(self, value):
+        self.score += value
+
+    def resetScore(self):
+        self.score = 0
 
 

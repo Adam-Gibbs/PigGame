@@ -1,5 +1,6 @@
 import Players
 import random
+import time
 
 def getPlayers():
     newPlayerName = input("Player Name: ")
@@ -33,6 +34,31 @@ def isWin(playerList):
     else:
         return False, None
 
+def playerTurn(currentPlayer):
+    currentTotal = 0
+    while input("\nPress [ENTER] to roll...\n") == "":
+        roll, pigs = currentPlayer.roll()
+        currentTotal += roll
+
+        print("player ", currentPlayer.getName(), " rolled a total of ", roll, " and ", pigs, " pig[s]")
+
+        if pigs == 1:
+            break
+        
+        if pigs == 2:
+            print("Thus your total is 0 and so their score is ", currentPlayer.getScore())
+            return
+
+        if pigs == 3:
+            print("This resets your score to 1 :(")
+            currentPlayer.resetScore()
+
+        print("total for the round of ", currentTotal)
+    
+    currentPlayer.addScore(currentTotal)
+    print("Thus your round ends with a total score of ", currentPlayer.getScore())
+    return
+    
 
 def Main():
     players = makePlayers(getPlayers())
@@ -42,8 +68,9 @@ def Main():
 
     while isWin(players)[0] == False:
         for player in players:
-            player.roll()
-            print(player.getName())
+            time.sleep(2)
+            print("\n\n\nPlayer ", player.getName(), "'s turn, current score of ", player.getScore())
+            playerTurn(player)
 
     print("\n\n" + isWin(players)[1].getName() + " Has won!")
 
