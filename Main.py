@@ -75,7 +75,7 @@ def Main(players):
 
         for player in players:
             time.sleep(2)
-            print("\n\n\nPlayer ", player.getName(), "'s turn, current score of ", player.getScore())
+            print("\n\n\nPlayer ", str(player.getName()) + "'s turn, current score of ", player.getScore(), " and a multiplyer of x" + str(player.getMultiplyer()))
             playerTurn(player)
 
     print("\n\n" + isWin(players)[1].getName() + " Has won!")

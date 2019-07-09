@@ -14,6 +14,9 @@ class playerClass:
     def getName(self):
         return self.name
 
+    def getMultiplyer(self):
+        return self.multiplyer
+
     def checkWin(self):
         if (self.score - 1) % 100 == 0:
             self.stats['Wins'] += 1
